@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Support\Str;
 
 return [
@@ -19,17 +21,14 @@ return [
         'categories' => [
             'path' => '/blog/categories/{filename}',
             'posts' => function ($page, $allPosts) {
-                return $allPosts->filter(function ($post) use ($page) {
-                    return $post->categories ? in_array($page->getFilename(), $post->categories, true) : false;
-                });
+                return $allPosts->filter(fn ($post) => $post->categories && in_array($page->getFilename(), $post->categories, true));
             },
         ],
     ],
 
     // helpers
-    'getDate' => function ($page) {
-        return Datetime::createFromFormat('U', $page->date);
-    },
+    'getDate' => fn ($page) => DateTime::createFromFormat('U', (string)$page->date),
+
     'getExcerpt' => function ($page, $length = 255) {
         if ($page->excerpt) {
             return $page->excerpt;
@@ -57,7 +56,5 @@ return [
             ? preg_replace('/\s+?(\S+)?$/', '', $truncated) . '...'
             : $cleaned;
     },
-    'isActive' => function ($page, $path) {
-        return Str::endsWith(trimPath($page->getPath()), trimPath($path));
-    },
+    'isActive' => fn ($page, $path) => Str::endsWith(trimPath($page->getPath()), trimPath($path)),
 ];
