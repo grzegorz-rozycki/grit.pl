@@ -7,9 +7,13 @@ use Illuminate\Support\Str;
 return [
     'baseUrl' => '',
     'production' => false,
-    'siteName' => 'Blog Starter Template',
-    'siteDescription' => 'Generate an elegant blog with Jigsaw',
-    'siteAuthor' => 'Author Name',
+    'siteName' => 'GRIT.PL',
+    'siteDescription' => 'Web technologies is my passion',
+    'siteAuthor' => 'Grzegorz',
+
+    // feature flags
+    'enableContact' => false,
+    'enableNewsletter' => false,
 
     // collections
     'collections' => [
