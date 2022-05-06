@@ -12,15 +12,10 @@ return [
     'siteAuthor' => 'Grzegorz',
 
     // feature flags
-    'enableContact' => false,
     'enableNewsletter' => false,
     'enableSearch' => true,
 
-    'navItems' => collect([
-        (object)['title' => 'About', 'url' => '/about'],
-        (object)['title' => 'Blog', 'url' => '/blog'],
-        (object)['title' => 'Contact', 'url' => '/contact'],
-    ]),
+    'navItems' => [],
 
     // collections
     'collections' => [
