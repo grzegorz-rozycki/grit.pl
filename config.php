@@ -17,6 +17,8 @@ return [
 
     'navItems' => [],
 
+    'gtm' => '',
+
     // collections
     'collections' => [
         'posts' => [

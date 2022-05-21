@@ -17,14 +17,32 @@
     <link rel="icon" href="/favicon.ico">
     <link href="/blog/feed.atom" type="application/atom+xml" rel="alternate" title="{{ $page->siteName }} Atom Feed">
 
-    @if ($page->production)
-        <!-- Insert analytics code here -->
+    @if ($page->production && $page->gtm)
+        <script>
+            (function (w, d, s, l, i) {
+                w[l] = w[l] || [];
+                w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+                const f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s),
+                    dl = l != 'dataLayer' ? '&l=' + l : '';
+                j.async = true;
+                j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+                f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', '{{ $page->gtm }}');
+        </script>
     @endif
 
     <link rel="stylesheet" href="{{ mix('css/main.css', 'assets/build') }}">
 </head>
 
 <body class="flex flex-col justify-between min-h-screen leading-normal font-sans">
+@if ($page->production && $page->gtm)
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id={{ $page->gtm }}"
+                height="0" width="0" style="display:none;visibility:hidden">
+        </iframe>
+    </noscript>
+@endif
 <header class="flex items-center shadow bg-white border-b h-24 py-4" role="banner">
     <div class="container flex items-center max-w-8xl mx-auto px-4 lg:px-8">
         <div class="flex items-center">
