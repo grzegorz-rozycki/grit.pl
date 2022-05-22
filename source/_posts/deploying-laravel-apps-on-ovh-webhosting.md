@@ -3,6 +3,10 @@ extends: _layouts.post
 title: "Deploying Laravel apps on OVH WebHosting"
 author: "Grzegorz Różycki"
 date: 2022-05-08
+categories:
+ - deployment
+ - laravel
+ - ovh
 ---
 
 # Deploying Laravel apps on OVH WebHosting
