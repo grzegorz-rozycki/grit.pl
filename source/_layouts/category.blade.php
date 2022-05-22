@@ -15,5 +15,7 @@
         @endif
     @endforeach
 
-    @include('_components.newsletter-signup')
+    @if($page->enableNewsletter)
+        @include('_components.newsletter-signup')
+    @endif
 @stop
