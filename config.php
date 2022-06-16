@@ -19,6 +19,8 @@ return [
 
     'gtm' => '',
 
+    'repositoryUrl' => 'https://github.com/grzegorz-rozycki/grit.pl',
+
     // collections
     'collections' => [
         'posts' => [

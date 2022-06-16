@@ -50,4 +50,15 @@
             <hr class="w-full border-b mt-2 mb-6">
         @endif
     @endforeach
+
+    @if ($page->repositoryUrl)
+        <section>
+            <h3>About this site</h3>
+            <p>
+                This site is generated statically via <a href="https://jigsaw.tighten.com/">Jigsaw</a>.
+                It's source code can be found at <a href="{{ $page->repositoryUrl }}">{{ parse_url($page->repositoryUrl, PHP_URL_HOST) }}</a>.
+                Feel free to report issues, start discussions or create pull requests if you find any issues or want to contribute in some way.
+            </p>
+        </section>
+    @endif
 @stop
